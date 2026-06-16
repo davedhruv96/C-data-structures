@@ -11,4 +11,11 @@ int main(){
     printList(list);
     removeNthNode(list, 5);
     printList(list);
+    addData(list, 2);
+    addData(list, 2);
+    addData(list, 2);
+    addData(list,2);
+    printList(list);
+    removeAllOccurenceOfValue(list, 2);
+    printList(list);
 }

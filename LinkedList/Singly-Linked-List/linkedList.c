@@ -174,31 +174,31 @@ int removeAllOccurenceOfValue(LinkedList* main, int value){
         printf("Fatal!\n");
         return -1;
     }
-    Node *loopingNode, *prevNode;
-    prevNode = NULL;
     if(!main->head){
         printf("No Nodes Found!\n");
         return -1;
     }
+    Node *loopingNode, *prevNode;
+    prevNode = NULL;
     loopingNode = main->head;
     while(loopingNode){
         if(loopingNode->data == value){
             if(loopingNode == main->head){
                 main->head = main->head->next;
                 free(loopingNode);
+                loopingNode = main->head;
             }
             else{
                 prevNode->next = loopingNode->next;
                 free(loopingNode);
+                loopingNode = prevNode->next;
             }
         }
-        prevNode = loopingNode;
-        loopingNode = loopingNode->next;
-
+        else{
+            prevNode = loopingNode;
+            loopingNode = loopingNode->next;
+        }
+        
     }
     return 1;
-}
-
-void insertNode(){
-    
 }
