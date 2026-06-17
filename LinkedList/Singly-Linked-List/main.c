@@ -1,21 +1,16 @@
+#include<stdio.h>
 #include "linkedList.h"
 
 int main(){
     LinkedList* list = createList();    
-    addData(list, 2);
-    addData(list, 3);
-    addData(list,4);
-    printList(list);
-    addData(list, 120);
-    addData(list, 400);
-    printList(list);
-    removeNthNode(list, 5);
-    printList(list);
-    addData(list, 2);
-    addData(list, 2);
-    addData(list, 2);
-    addData(list,2);
-    printList(list);
-    removeAllOccurenceOfValue(list, 2);
-    printList(list);
+    addDataAtEnd(list,1);
+    addDataAtEnd(list, 2);
+    addDataAtEnd(list, 3);
+    addDataAtEnd(list, 4);
+    addDataAtEnd(list, 5);
+    addDataAtEnd(list, 6);
+    printf("%d\n",getValueAtNthNode(list, 5));
+    // printList(list);
+    // reverseList(list);
+    // printList(list);
 }

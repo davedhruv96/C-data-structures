@@ -13,7 +13,7 @@ typedef struct
 
 LinkedList *createList();
 
-void addData(LinkedList* list, int data);
+void addDataAtEnd(LinkedList* list, int data);
 
 void destroyList(LinkedList* main);
 
@@ -26,6 +26,14 @@ int removeNthNode(LinkedList* main, int n);
 int removeAllOccurenceOfValue(LinkedList* main, int value);
 
 void printList(LinkedList* main);
+
+int insertAtNthPos(LinkedList* main, int n, int value);
+
+int getListLength(LinkedList* main);
+
+int getValueAtNthNode(LinkedList *main, int n);
+
+int reverseList(LinkedList* main);
 
 
 #endif
