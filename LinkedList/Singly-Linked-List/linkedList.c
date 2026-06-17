@@ -339,11 +339,7 @@ int reverseList(LinkedList *main)
         main->head = currNode;
         return 1;
     }
-    Node *nextNode;
-    nextNode = currNode->next;
-    if(!nextNode){
-        
-    }
+    Node *nextNode = currNode->next;
 
     prevNode->next = NULL;
     currNode->next = prevNode;
