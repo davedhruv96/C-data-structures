@@ -11,4 +11,8 @@ LinkedList* createList();
 
 void freeList(LinkedList* list);
 
+int prepend(LinkedList* list, int value);
+
+void printList(LinkedList* list);
+
 #endif
