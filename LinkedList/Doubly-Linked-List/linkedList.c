@@ -69,12 +69,14 @@ void printList(LinkedList* list){
     printf("]\n");
 }
 
-int prepend(LinkedList* list, int value){
+int insert_start(LinkedList* list, int value){
     if(!list){
         return -1;
     }
-
     Node* node = (Node*)malloc(sizeof(Node));
+    if(!node){
+        return -1;
+    }
     node->data = value;
     node->prev = list->sentinel_head;
     node->next = list->sentinel_head->next;
@@ -84,3 +86,52 @@ int prepend(LinkedList* list, int value){
     list->size++;
     return 0;
 }
+
+int insert_end(LinkedList* list, int value){
+    if(!list){
+        return -1;
+    }
+
+    Node* node = (Node*)malloc(sizeof(Node));
+    if(!node){
+        return -1;
+    }
+    node->data = value;
+    node->next = list->sentinel_tail;
+    if(list->size == 0){
+        node->prev = list->sentinel_head;
+
+        list->sentinel_head->next = node;
+        list->sentinel_tail->prev = node;
+        list->size++;
+        return 0;
+    }
+
+    node->prev = list->sentinel_tail->prev;
+
+    list->sentinel_tail->prev->next = node;
+    list->sentinel_tail->prev = node;
+    list->size++;
+    return 0;
+}
+
+int insert_after(LinkedList* list, Node* target, int value){
+    if(!list || !target){
+        return -1;
+    }
+
+    Node* node = (Node*)malloc(sizeof(Node));
+    if(!node){
+        return -1;
+    }
+    node->data = value;
+    node->next = target->next;
+    node->prev = target;
+
+    target->next->prev = node;
+    target->next = node;
+    
+    list->size++;
+    return 0;
+}
+

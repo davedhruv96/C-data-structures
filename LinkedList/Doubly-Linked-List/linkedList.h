@@ -11,8 +11,13 @@ LinkedList* createList();
 
 void freeList(LinkedList* list);
 
-int prepend(LinkedList* list, int value);
-
 void printList(LinkedList* list);
+
+int insert_start(LinkedList* list, int value);
+
+int insert_end(LinkedList* list, int value);
+
+int insert_after(LinkedList* list, Node* target, int value);
+
 
 #endif
