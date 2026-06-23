@@ -19,5 +19,10 @@ int insert_end(LinkedList* list, int value);
 
 int insert_after(LinkedList* list, Node* target, int value);
 
+int delete_start(LinkedList* list);
+
+int delete_end(LinkedList* list);
+
+int delete_after(LinkedList* list, Node* target);
 
 #endif

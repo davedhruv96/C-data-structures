@@ -98,15 +98,6 @@ int insert_end(LinkedList* list, int value){
     }
     node->data = value;
     node->next = list->sentinel_tail;
-    if(list->size == 0){
-        node->prev = list->sentinel_head;
-
-        list->sentinel_head->next = node;
-        list->sentinel_tail->prev = node;
-        list->size++;
-        return 0;
-    }
-
     node->prev = list->sentinel_tail->prev;
 
     list->sentinel_tail->prev->next = node;
@@ -135,3 +126,55 @@ int insert_after(LinkedList* list, Node* target, int value){
     return 0;
 }
 
+int delete_start(LinkedList* list){
+    if(!list){
+        return -1;
+    }
+    if(list->size == 0){
+        return 0;
+    }
+    Node* freePtr=list->sentinel_head->next;
+
+    list->sentinel_head->next = list->sentinel_head->next->next;
+    list->sentinel_head->next->prev = list->sentinel_head;
+    list->size--;
+
+    free(freePtr);
+    return 0;
+}
+
+int delete_end(LinkedList* list){
+    if(!list){
+        return -1;
+    }
+    if(list->size == 0){
+        return 0;
+    }
+    Node* freePtr = list->sentinel_tail->prev;
+
+    list->sentinel_tail->prev = list->sentinel_tail->prev->prev;
+    list->sentinel_tail->prev->next = list->sentinel_tail;
+    list->size--;
+    
+    free(freePtr);
+    return 0;
+}
+
+int delete_after(LinkedList* list, Node* target){
+    if(!list){
+        return -1;
+    }
+    if(list->size == 0){
+        return 0;
+    }
+    Node* victim = target->next;
+    if(victim == list->sentinel_tail){
+        return -1;
+    }
+    target->next = victim->next;
+    victim->next->prev = target;
+    
+    list->size--;
+    free(victim);
+    return 0;
+}
