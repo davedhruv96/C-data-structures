@@ -29,4 +29,8 @@ int is_empty(LinkedList *list);
 
 Node *find_value(LinkedList *list, int value);
 
+int value_at(LinkedList *list, int index);
+
+int delete_at(LinkedList *list, int index);
+
 #endif
