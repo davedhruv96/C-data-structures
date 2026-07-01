@@ -36,7 +36,8 @@ void stack_destory(mem_arena *arena, stack *st) {
 }
 
 void push(mem_arena *arena, stack *st, int value) {
-  block *new_block = (block *)arena_push(arena, (u64)sizeof(block));
+
+  block *new_block = (block *)arena_push(arena, ALIGN_UP8((u64)sizeof(block)));
   if (!new_block) {
     return;
   }
@@ -54,7 +55,7 @@ int pop(mem_arena *arena, stack *st) {
     if (st->tos) {
       temp = st->tos->fields;
       st->tos = st->tos->link;
-      arena_pop(arena, (u64)sizeof(block));
+      arena_pop(arena, ALIGN_UP8((u64)sizeof(block)));
     }
   }
   return temp.dec;

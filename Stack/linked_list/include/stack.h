@@ -23,6 +23,8 @@ typedef i32 b32;
 #define MiB(n) ((u64)(n) << 20)
 #define GiB(n) ((u64)(n) << 30)
 
+#define ALIGN_UP8(n) (((u64)(n) + 7) & ~7)
+
 stack *stack_create(mem_arena *arena);
 
 void stack_destory(mem_arena *arena, stack *st);
