@@ -25,6 +25,8 @@ typedef i32 b32;
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
+#define ALIGN_UP8(n) (((u64)(n) + 7) & ~7)
+
 mem_arena *arena_create(u64 capacity);
 
 u64 align_offset(u64 currentOffset, u64 alignment);

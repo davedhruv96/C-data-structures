@@ -1,19 +1,6 @@
 #include "stack.h"
 #include <stdio.h>
 
-struct data {
-  int dec;
-};
-
-struct stack {
-  block *tos;
-};
-
-struct block {
-  struct data fields;
-  block *link;
-};
-
 stack *stack_create(mem_arena *arena) {
   stack *main_stack = (stack *)arena_push(arena, (u64)sizeof(stack));
 
@@ -21,7 +8,6 @@ stack *stack_create(mem_arena *arena) {
     return NULL;
   }
   main_stack->tos = NULL;
-
   return main_stack;
 }
 
@@ -80,4 +66,12 @@ void printStack(stack *st) {
     traverse = traverse->link;
   }
   printf("]\n");
+}
+
+int peek(stack *st) {
+  if (!st || !st->tos) {
+    return -1; // error
+  }
+
+  return st->tos->fields.dec;
 }
