@@ -2,10 +2,10 @@ LINKEDLIST_DOUBLE = LinkedList/Doubly-Linked-List
 LINKEDLIST_SINGLE = LinkedList/Singly-Linked-List
 STACK_LL = Stack/linked_list
 
-doubly-linkedlist:
+doubly-ll:
 	make -C $(LINKEDLIST_DOUBLE)
 
-singly-linkedlist:
+singly-ll:
 	make -C $(LINKEDLIST_SINGLE)
 
 stack_linkedlist:
