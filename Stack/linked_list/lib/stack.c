@@ -75,3 +75,40 @@ int peek(stack *st) {
 
   return st->tos->fields.dec;
 }
+
+int peep(stack *st, int k) {
+  if (!st || !st->tos) {
+    return -1; // error
+  }
+
+  int blockCount = 1;
+  block *traverse = st->tos;
+  while (traverse && blockCount < k) {
+    traverse = traverse->link;
+    blockCount++;
+  }
+  if (blockCount == k) {
+    return traverse->fields.dec;
+  } else {
+    return -1; // error
+  }
+}
+
+int change(stack *st, int k, int valtoExcha) {
+  if (!st || !st->tos) {
+    return -1;
+  }
+
+  int blockCount = 1;
+  block *traverse = st->tos;
+  while (traverse && blockCount < k) {
+    traverse = traverse->link;
+    blockCount++;
+  }
+  if (blockCount == k) {
+    traverse->fields.dec = valtoExcha;
+    return 0;
+  } else {
+    return -1;
+  }
+}

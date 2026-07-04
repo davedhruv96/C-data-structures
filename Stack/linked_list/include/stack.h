@@ -29,4 +29,6 @@ void printStack(stack *st);
 
 int peek(stack *st);
 
+int change(stack *st, int k, int valToExcha);
+
 #endif

@@ -10,4 +10,4 @@ op_prec: operator_precedence/operator_precedence.c ./lib/mystring.c ./lib/parser
 
 clean: 
 	rm -f execute
-	rm -f operator_precedence/op_prec
+	rm -f op_prec
